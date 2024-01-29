@@ -1,9 +1,17 @@
 import React from 'react';
 
+type ItemType ={
+    title: string
+    value: any
+}
+
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
     onChange: ()=>void
+    items: ItemType[]
+    onClick: (value: any)=>void
+
 }
 export const Accordion = (props: AccordionPropsType) => {
 
@@ -13,7 +21,7 @@ export const Accordion = (props: AccordionPropsType) => {
                 title={props.titleValue}
                 onChange={props.onChange}
             />
-            {!props.collapsed && <AccordionBody/>}
+            {!props.collapsed && <AccordionBody onClick={props.onClick} items={props.items}/>}
         </div>
     );
 };
@@ -29,12 +37,18 @@ export const AccordionTitle = (props: AccordionTitlePropsType) => {
     )
 }
 
-export const AccordionBody = () => {
+type AccordionBodyPropsType = {
+    items: ItemType[]
+    onClick: (value: any)=>void
+}
+
+export const AccordionBody = (props: AccordionBodyPropsType) => {
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {props.items.map((i, index) => <li onClick={() => {props.onClick(i.value)}} key={index}>{i.title}</li> )}
         </ul>
     )
 }
+
+//index Нельзя использовать в качесвтве ключа, если массив может меняться ил есть кнопки удаения, добавления и тд
+//можно только когда массив будет оставаться неизменным

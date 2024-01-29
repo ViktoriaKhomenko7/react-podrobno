@@ -1,6 +1,5 @@
 
 import React, {useState} from "react";
-import {action} from '@storybook/addon-actions';
 import {Rating, RatingValueType} from "./Rating";
 
 export default {
