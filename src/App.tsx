@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import {Rating, RatingValueType} from "./components/rating/Rating";
 import {UncontrolledOnnOff} from "./components/onOff/UncontrolledOnOff";
-import {Accordion} from "./components/accordion/Accordion";
-import {UnControlledRating} from "./components/selfcontrolledRating/UncontrolledRating";
-import {Select} from "./components/select/Select";
 
 function App() {
 
