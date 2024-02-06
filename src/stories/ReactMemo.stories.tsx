@@ -33,3 +33,4 @@ export const Example1 = () => {
     </>
 }
 
+//все компоненты обернуть в react.memo
