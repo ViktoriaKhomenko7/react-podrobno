@@ -1,36 +1,73 @@
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 
 export default {
-    title: 'React.memo demo'
+    title: 'useEffect demo'
 }
 
-const NewMessagesCounter = (props: { count: number }) => {
-    return <div>{props.count}</div>
+export const SimpleExample = () => {
+    console.log('SimpleExample')
+
+    // const [counter, setCounter] = useState(1)
+    // const [fake, setFake] = useState(1)
+
+    // useEffect( ()=>{
+    //     console.log('useEffect')
+    //     document.title = counter.toString()
+    //
+    //     //сторонние эффекты sideEffects
+    //     //api.getUsers().then('')
+    //     //setInterval
+    //     //IndexedDB
+    //     //document.getElementById
+    //     //document.title = 'User '
+    // }, [counter] )
+
+    // useEffect( ()=>{
+    //     console.log('useEffect every render')
+    // })
+    //
+    // useEffect( ()=>{
+    //     console.log('useEffect first')
+    // }, [] )
+    //
+    // useEffect( ()=>{
+    //     console.log('useEffect every when counter change')
+    // }, [counter] )
+    //
+    // return <>
+    //     Hello, {counter}
+    //     <button onClick={() => setFake(fake + 1)}>+</button>
+    // </>
 }
 
-const SecretUsers = (props: { users: string[] }) => {
-    console.log('users')
-    return <div>{
-        props.users.map((u, i) => <div key={i}>{u}</div>)
-    }</div>
-}
-const Users = React.memo(SecretUsers)
+export const SetTimeoutExample = () => {
+    console.log('SetTimeoutExample')
 
-export const Example1 = () => {
+    const [counter, setCounter] = useState(1)
+    const [fake, setFake] = useState(1)
 
-    console.log('Example1')
-    const [counter, setCounter] = useState(0)
-    const [users, setUsers] = useState(['Dimych', 'Valera', 'Artem'])
-    const addUser = () => {
-        const newUsers = [...users, 'Sveta' + new Date().getTime()]
-        setUsers(newUsers)
-    }
+    useEffect(() => {
+
+        // setTimeout(()=>{
+        //     console.log('SetTimeout')
+        //     document.title = counter.toString()
+        // }, 1000)
+
+        // setInterval(()=>{
+        //     console.log("tick" + counter)
+        //     setCounter((state)=> state + 1)
+        // }, 1000)
+
+    }, [])
+
+
     return <>
-        <button onClick={() => setCounter(counter + 1)}>+</button>
-        <button onClick={addUser}>add user</button>
-        <NewMessagesCounter count={counter}/>
-        <Users users={users}/>
+        counter: {counter} - fake: {fake}
+        {/*<button onClick={() => setFake(fake + 1)}>fake</button>*/}
+        {/*<button onClick={() => setCounter(counter + 1)}>counter</button>*/}
     </>
 }
+
+
 
 //все компоненты обернуть в react.memo
